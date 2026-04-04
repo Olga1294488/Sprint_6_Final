@@ -22,3 +22,9 @@ class HomePage(BasePage, HomePageLocators):
     
     def get_current_url(self):
         return self.driver.current_url
+    def click_yandex_logo(self):
+        logo = self.find_element(self.YANDEX_LOGO)
+        self.click_js(logo)
+    def click_order_bottom(self):
+        button = self.wait.until(EC.element_to_be_clickable(self.ORDER_BUTTON_BOTTOM))
+        self.click_js(button)

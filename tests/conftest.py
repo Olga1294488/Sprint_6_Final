@@ -1,8 +1,7 @@
+import pytest
 import sys
 import os
-import pytest
 from selenium import webdriver
-
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
