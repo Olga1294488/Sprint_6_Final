@@ -1,6 +1,5 @@
 import pytest
 import allure
-from selenium.webdriver.common.by import By
 from pages.home_page import HomePage
 
 
@@ -17,23 +16,14 @@ class TestLogo:
     @allure.title("Переход на Дзен по логотипу Яндекса")
     def test_yandex_logo(self, driver):
         home_page = HomePage(driver)
-        original_window = driver.current_window_handle
         
-        yandex_link = driver.find_element(By.CLASS_NAME, "Header_LogoYandex__3TSOI").get_attribute("href")
-        
-        driver.execute_script(f"window.open('{yandex_link}');")
-        
-        home_page.wait.until(lambda d: len(d.window_handles) > 1)
-        
-        for handle in driver.window_handles:
-            if handle != original_window:
-                driver.switch_to.window(handle)
-                break
+        yandex_link = home_page.get_yandex_logo_link()
+        home_page.open_link_in_new_tab(yandex_link)
+        original_window = home_page.switch_to_new_window()
         
         home_page.wait.until(lambda d: "dzen.ru" in d.current_url or "yandex.ru" in d.current_url)
         
-        current_url = driver.current_url
-        driver.close()
-        driver.switch_to.window(original_window)
+        current_url = home_page.get_current_url()
+        home_page.close_current_window_and_switch_back(original_window)
         
         assert "dzen.ru" in current_url
