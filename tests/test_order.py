@@ -16,16 +16,16 @@ class TestOrder:
         
         order_page = OrderPage(driver)
         order_page.fill_first_form(
-            OrderData.ORDER_TOP["name"],
-            OrderData.ORDER_TOP["surname"],
-            OrderData.ORDER_TOP["address"],
-            OrderData.ORDER_TOP["metro"],
-            OrderData.ORDER_TOP["phone"]
+            OrderData.FIRST_ORDER["name"],
+            OrderData.FIRST_ORDER["surname"],
+            OrderData.FIRST_ORDER["address"],
+            OrderData.FIRST_ORDER["metro"],
+            OrderData.FIRST_ORDER["phone"]
         )
         order_page.fill_second_form_black_with_comment(
-            OrderData.ORDER_TOP["date"],
-            OrderData.ORDER_TOP["period"],
-            OrderData.ORDER_TOP["comment"]
+            OrderData.FIRST_ORDER["date"],
+            OrderData.FIRST_ORDER["period"],
+            OrderData.FIRST_ORDER["comment"]
         )
         order_page.confirm()
         
@@ -40,16 +40,16 @@ class TestOrder:
         
         order_page = OrderPage(driver)
         order_page.fill_first_form(
-            OrderData.ORDER_BOTTOM["name"],
-            OrderData.ORDER_BOTTOM["surname"],
-            OrderData.ORDER_BOTTOM["address"],
-            OrderData.ORDER_BOTTOM["metro"],
-            OrderData.ORDER_BOTTOM["phone"]
+            OrderData.SECOND_ORDER["name"],
+            OrderData.SECOND_ORDER["surname"],
+            OrderData.SECOND_ORDER["address"],
+            OrderData.SECOND_ORDER["metro"],
+            OrderData.SECOND_ORDER["phone"]
         )
         order_page.fill_second_form_grey_with_comment(
-            OrderData.ORDER_BOTTOM["date"],
-            OrderData.ORDER_BOTTOM["period"],
-            OrderData.ORDER_BOTTOM["comment"]
+            OrderData.SECOND_ORDER["date"],
+            OrderData.SECOND_ORDER["period"],
+            OrderData.SECOND_ORDER["comment"]
         )
         order_page.confirm()
         

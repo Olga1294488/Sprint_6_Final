@@ -25,3 +25,8 @@ class OrderPageLocators:
     @staticmethod
     def metro_option(metro_name):
         return By.XPATH, f"//li[contains(text(), '{metro_name}')]"
+    def metro_option(self, metro_name):
+        return (By.XPATH, f"//li[contains(text(), '{metro_name}')]")
+
+    def period_option(self, period_name):
+        return (By.XPATH, f"//div[contains(text(), '{period_name}')]")

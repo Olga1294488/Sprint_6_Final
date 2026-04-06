@@ -19,11 +19,12 @@ class TestLogo:
         
         yandex_link = home_page.get_yandex_logo_link()
         home_page.open_link_in_new_tab(yandex_link)
-        original_window = home_page.switch_to_new_window()
-        
-        home_page.wait.until(lambda d: "dzen.ru" in d.current_url or "yandex.ru" in d.current_url)
+        home_page.wait_for_new_window()
+        home_page.switch_to_last_window()
+        home_page.wait_for_url_contains_dzen()
         
         current_url = home_page.get_current_url()
-        home_page.close_current_window_and_switch_back(original_window)
+        home_page.close_current_window()
+        home_page.switch_to_original_window(home_page.get_current_window_handle())
         
         assert "dzen.ru" in current_url
